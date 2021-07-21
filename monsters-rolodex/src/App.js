@@ -7,21 +7,14 @@ class  App extends Component {
   constructor() {
     super();
     this.state = {
-      billionaires: [
-        {
-          name: 'Bezos',
-          id: 'bil1'
-        },
-        {
-          name: 'Elon',
-          id: 'bil2'
-        },
-        {
-          name: 'Placide',
-          id: 'bil3'
-        },
-      ]
+      billionaires: []
     }
+  }
+
+  componentDidMount() {
+    fetch('https://jsonplaceholder.typicode.com/users')
+        .then(response => response.json())
+        .then(users => this.setState({billionaires: users}));
   }
 
   render() {
@@ -29,7 +22,7 @@ class  App extends Component {
     return (
         <div className="App">
           {
-            this.state.billionaires.map(billionaire => <h1 key={billionaire.id}> {billionaire.name} </h1>)
+            this.state.billionaires.map(billionaire => <h1 key={billionaire.id  }> {billionaire.name} </h1>)
           }
         </div>
     );
