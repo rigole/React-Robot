@@ -7,7 +7,20 @@ class  App extends Component {
   constructor() {
     super();
     this.state = {
-      string: 'Hello Plass'
+      billionaires: [
+        {
+          name: 'Bezos',
+          id: 'bil1'
+        },
+        {
+          name: 'Elon',
+          id: 'bil2'
+        },
+        {
+          name: 'Placide',
+          id: 'bil3'
+        },
+      ]
     }
   }
 
@@ -15,11 +28,9 @@ class  App extends Component {
 
     return (
         <div className="App">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo"/>
-            <p>{ this.state.string}</p>
-            <button onClick={() => this.setState({string: 'Hello Rigole'})}>Change Text</button>
-          </header>
+          {
+            this.state.billionaires.map(billionaire => <h1 key={billionaire.id}> {billionaire.name} </h1>)
+          }
         </div>
     );
   }
