@@ -27,12 +27,7 @@ class  App extends Component {
     return (
 
         <div className="App">
-            <input
-                type='search'
-                placeholder='Search monsters'
-                onChange={ event => this.setState(
-                    { searchField: event.target.value })}
-            />
+
            <CardList billionaires = {filteredBillionaires }/>
         </div>
     );
