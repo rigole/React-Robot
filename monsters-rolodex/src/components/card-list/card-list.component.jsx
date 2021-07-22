@@ -1,10 +1,11 @@
 import React from 'react';
 import './card-list.style.css'
+import {Card} from "../card/card.component";
 
 export const CardList = props => (
      <div className='card-list'>
         {props.billionaires.map(billionaire =>
-            <h1 key={billionaire.id  }> {billionaire.name} </h1>
+           <Card key={billionaire.id} billionaire={billionaire}/>
          )}
     </div>
 );
