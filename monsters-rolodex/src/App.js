@@ -20,12 +20,20 @@ class  App extends Component {
   }
 
   render() {
-
+    const { billionaires, searchField } = this.state;
+    const filteredBillionaires = billionaires.filter( billionaire =>
+    billionaire.name.toLowerCase().includes(searchField.toLowerCase())
+    );
     return (
 
         <div className="App">
-            <input type='search' placeholder='Search monsters' onChange={event => console.log(event.target.value)}/>
-           <CardList billionaires = {this.state.billionaires}/>
+            <input
+                type='search'
+                placeholder='Search monsters'
+                onChange={ event => this.setState(
+                    { searchField: event.target.value })}
+            />
+           <CardList billionaires = {filteredBillionaires }/>
         </div>
     );
   }
