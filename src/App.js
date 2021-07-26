@@ -10,7 +10,7 @@ class  App extends Component {
     this.state = {
       billionaires: [],
       searchField: '',
-      title: ''
+
     };
 
     //this.onSearchChange= this.onSearchChange.bind(this);
@@ -27,23 +27,21 @@ class  App extends Component {
   onSearchChange =  event => {
     this.setState({
       searchField: event.target.value,
-      title: event.target.value
     });
   }
 
   render() {
-    const { billionaires, searchField, title } = this.state;
-    //const filteredBillionaires = billionaires.filter(billionaire =>
-        //billionaire.name.toLowerCase().includes(searchField.toLowerCase())
-
-    //)
+    const { billionaires, searchField } = this.state;
+    const filteredBillionaires = billionaires.filter(billionaire =>
+        billionaire.name.toLowerCase().includes(searchField.toLowerCase())
+    );
     return (
 
         <div className="App">
-          <h1>{title}</h1>
+          <h1>Monsters Rodolex </h1>
            <SearchBox onSearchChange={ this.onSearchChange }
            />
-           <CardList billionaires={billionaires}/>
+           <CardList billionaires={filteredBillionaires}/>
         </div>
     );
   }
